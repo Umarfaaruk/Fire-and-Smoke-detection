@@ -1,6 +1,6 @@
-# Fire and Smoke Detection Using YOLO
+# Fire and Smoke Detection Using YOLOv11
 
-This repository contains code for detecting fire and smoke in images and videos using the YOLO model. The dataset is stored in Google Drive, and the trained model alerts the user by sending an SMS when fire or smoke is detected.
+This repository contains code for detecting fire and smoke in images and videos using the YOLOv11 model. The dataset is stored in Google Drive, and the trained model alerts the user by sending an SMS when fire or smoke is detected.
 
 ## Table of Contents
 - [Introduction](#introduction)
