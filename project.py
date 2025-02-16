@@ -4,12 +4,11 @@ drive.mount('/content/drive')
 !rm -rf ~/.cache
 !nvidia-smi
 
-#Next, install the required libraries:
+#install the required libraries:
 !pip install ultralytics
 !pip install matplotlib
 !pip install opencv-python-headless
 !pip install twilio
-```
 
 #Import necessary modules:
 
@@ -56,7 +55,7 @@ print(train_results)
 
 train_results = model.train(
     data=data_yaml_path,
-    epochs=10,
+    epochs=100,
     batch=16,
     imgsz=640,
     device='cuda',
@@ -131,7 +130,7 @@ plt.show()
 
 
 model = YOLO('/content/runs/detect/train2/weights/best.pt')
-results = model('/content/fire.15.png', show=True)
+results = model('/content/image.png', show=True) #path of the image 
 for result in results:
     result.show()
 
@@ -139,7 +138,7 @@ for result in results:
 #Detect smoke and fire from an image and convert video to frames:
 
 
-video_path = '/content/11584958-uhd_3840_2160_30fps.mp4'  # Path of the video
+video_path = '/content/video.mp4'  # Path of the video
 cap = cv2.VideoCapture(video_path)
 
 if not cap.isOpened():
@@ -167,14 +166,14 @@ else:
 
 #Send SMS alert using Twilio:
 
-account_sid = 'ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
-auth_token = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+account_sid = 'ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'#replace with your twilio acct sid 
+auth_token = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'# replace with your twilio token number
 client = Client(account_sid, auth_token)
 
 message = client.messages.create(
-  from_='+15594148274',
+  from_='+1***********'#replace with your twilio number 
   body='Alert!! Fire/Smoke is Detected',
-  to='+917675939955'
+  to='+91***********'#repalce with the client/user number 
 )
 
 print(message.sid)
